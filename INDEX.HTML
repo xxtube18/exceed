@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso - Dashboard de Desempenho</title>
+    <style>
+        /* Zera margens e define a fonte */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Fundo principal preto */
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden; /* Evita barra de rolagem */
+        }
+
+        /* Colunas laterais para as fotos (NODAx e VITIN9) */
+        .side-player {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Efeito sutil de luz verde atrás dos jogadores para destacar a foto */
+        .side-player::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(94, 196, 67, 0.1) 0%, rgba(0,0,0,0) 60%);
+            z-index: 0;
+        }
+
+        /* Estilo das fotos dos jogadores (grandes para focar na camisa) */
+        .side-player img {
+            height: 80vh; /* Ocupa 80% da altura da tela */
+            max-width: 100%;
+            object-fit: cover;
+            z-index: 1;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+            border-bottom: 4px solid #5ec443; /* Detalhe verde na base da foto */
+            border-radius: 8px;
+        }
+
+        /* Etiqueta com o nome do jogador em cima da foto */
+        .player-name {
+            position: absolute;
+            bottom: 8%;
+            background-color: rgba(13, 13, 13, 0.9);
+            border: 1px solid #5ec443;
+            color: #ffffff;
+            padding: 10px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 2;
+            border-radius: 4px;
+        }
+
+        /* Coluna central (Texto e Link) */
+        .center-content {
+            flex: 1.2; /* Ganha um pouco mais de espaço que as laterais */
+            text-align: center;
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Título do texto central */
+        .center-content h1 {
+            font-size: 3rem;
+            color: #5ec443; /* Verde claro equilibrado */
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(94, 196, 67, 0.2);
+        }
+
+        /* Texto de explicação */
+        .center-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #cccccc;
+            margin-bottom: 50px;
+        }
+
+        /* Botão com o seu link */
+        .btn-acesso {
+            background-color: #5ec443; /* Fundo verde claro */
+            color: #0d0d0d; /* Letra preta para dar contraste */
+            text-decoration: none;
+            padding: 20px 60px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(94, 196, 67, 0.3);
+        }
+
+        /* Efeito ao passar o mouse no botão */
+        .btn-acesso:hover {
+            background-color: #6ee352; /* Verde levemente mais forte */
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(94, 196, 67, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="side-player">
+        <img src="IMG/NODAx.png" alt="NODAx">
+        <div class="player-name">NODAx</div>
+    </div>
+
+    <div class="center-content">
+        <h1>Dashboard de Desempenho</h1>
+        <p>
+            Plataforma analítica oficial. Ferramenta desenvolvida para o monitoramento de estatísticas táticas, 
+            análise de rendimento individual e métricas de equipe em tempo real. Acesse o sistema abaixo.
+        </p>
+        
+        <a href="https://xxtube18.github.io/sx-dados-V2/jogadores.html" class="btn-acesso">Acessar App</a>
+    </div>
+
+    <div class="side-player">
+        <img src="IMG/VITIN9.png" alt="VITIN9">
+        <div class="player-name">VITIN9</div>
+    </div>
+
+</body>
+</html>
