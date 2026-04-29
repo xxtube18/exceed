@@ -9,66 +9,76 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: #0d0d0d;
             color: #ffffff;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            overflow: hidden; 
+            overflow-x: hidden;
         }
 
+        /* Container dos Jogadores */
         .side-player {
             flex: 1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100%;
+            height: 100vh;
             position: relative;
+            transition: all 0.5s ease;
         }
 
         .side-player::before {
             content: '';
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0,0,0,0) 60%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0,0,0,0) 70%);
             z-index: 0;
         }
 
         .side-player img {
-            height: 80vh; 
+            height: 75vh;
             max-width: 100%;
-            object-fit: cover;
+            object-fit: contain;
             z-index: 1;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8)) grayscale(100%);
-            border-bottom: 4px solid #ffffff; 
-            border-radius: 8px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9)) grayscale(100%);
+            border-bottom: 4px solid #ffffff;
+            transition: all 0.4s ease;
+        }
+
+        /* Efeito ao passar o mouse no jogador */
+        .side-player:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+            border-bottom-color: #00ff88; /* Cor de destaque opcional */
         }
 
         .player-name {
-            position: absolute;
-            bottom: 8%;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid #ffffff;
+            margin-top: -30px;
+            background-color: #ffffff;
             color: #0d0d0d;
-            padding: 10px 40px;
-            font-size: 1.5rem;
-            font-weight: bold;
+            padding: 10px 30px;
+            font-size: 1.2rem;
+            font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             z-index: 2;
             border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
+        /* Conteúdo Central */
         .center-content {
-            flex: 1.2; 
+            flex: 1.5;
             text-align: center;
-            padding: 0 50px;
+            padding: 0 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -77,37 +87,65 @@
         }
 
         .center-content h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            line-height: 1.1;
         }
 
         .center-content p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1.6;
             color: #aaaaaa;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+            max-width: 500px;
         }
 
+        /* Botão Estilizado */
         .btn-acesso {
-            background-color: #ffffff; 
-            color: #0d0d0d; 
+            background-color: #ffffff;
+            color: #0d0d0d;
             text-decoration: none;
-            padding: 20px 60px;
-            font-size: 1.4rem;
+            padding: 18px 50px;
+            font-size: 1.2rem;
             font-weight: 800;
             text-transform: uppercase;
-            border-radius: 8px;
+            border-radius: 5px;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
 
         .btn-acesso:hover {
-            background-color: #cccccc; 
-            transform: translateY(-5px) scale(1.02);
+            background-color: #00ff88; /* Muda para verde neon no hover */
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Responsividade para Celulares */
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+                height: auto;
+                overflow-y: auto;
+            }
+
+            .side-player {
+                height: 60vh;
+                width: 100%;
+                margin: 20px 0;
+            }
+
+            .side-player img {
+                height: 50vh;
+            }
+
+            .center-content {
+                order: -1; /* Título e botão aparecem no topo no celular */
+                padding: 60px 20px;
+            }
         }
     </style>
 </head>
@@ -115,7 +153,7 @@
 
     <!-- Lado Esquerdo: DMrlq -->
     <div class="side-player">
-        <img src="dmrlq.png" alt="DMrlq">
+        <img src="DMrlq.png" alt="Jogador DMrlq">
         <div class="player-name">DMrlq</div>
     </div>
 
@@ -123,8 +161,7 @@
     <div class="center-content">
         <h1>Dashboard de Desempenho</h1>
         <p>
-            Plataforma analítica oficial. Ferramenta desenvolvida para o monitoramento de estatísticas táticas, 
-            análise de rendimento individual e métricas de equipe em tempo real. Acesse o sistema abaixo.
+            Plataforma analítica oficial. Ferramenta desenvolvida para o monitoramento de estatísticas táticas e métricas de equipe em tempo real.
         </p>
         
         <a href="https://xxtube18.github.io/sx-dados-V2/jogadores.html" class="btn-acesso">Acessar App</a>
@@ -132,7 +169,7 @@
 
     <!-- Lado Direito: TTZ -->
     <div class="side-player">
-        <img src="ttz.png" alt="TTZ">
+        <img src="TTZ.png" alt="Jogador TTZ">
         <div class="player-name">TTZ</div>
     </div>
 
