@@ -2,137 +2,109 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acesso - Dashboard de Desempenho</title>
+    <title>Player Card - DNrlq</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Configurações Gerais e Cores */
+        :root {
+            --preto-fundo: #000000;
+            --preto-card: #121212;
+            --branco-puro: #FFFFFF;
+            --cinza-detalhe: #333333;
         }
 
         body {
-            background-color: #0d0d0d;
-            color: #ffffff;
-            height: 100vh;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            overflow: hidden; 
-        }
-
-        .side-player {
-            flex: 1;
+            background-color: var(--preto-fundo);
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Estrutura do Card */
+        .player-card {
+            width: 250px;
+            background-color: var(--preto-card);
+            border: 2px solid var(--branco-puro);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .player-card:hover {
+            transform: scale(1.05);
+            border-color: #888; /* Leve destaque no hover */
+        }
+
+        /* Foto do Player com Filtro P&B */
+        .photo-container {
+            width: 100%;
+            height: 300px;
+            background-color: var(--cinza-detalhe);
+            overflow: hidden;
+        }
+
+        .player-photo {
+            width: 100%;
             height: 100%;
-            position: relative;
-        }
-
-        .side-player::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(94, 196, 67, 0.1) 0%, rgba(0,0,0,0) 60%);
-            z-index: 0;
-        }
-
-        .side-player img {
-            height: 80vh; 
-            max-width: 100%;
             object-fit: cover;
-            z-index: 1;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
-            border-bottom: 4px solid #5ec443; 
-            border-radius: 8px;
+            /* Aplica o efeito Preto e Branco na foto */
+            filter: grayscale(100%) contrast(1.1);
         }
 
-        .player-name {
-            position: absolute;
-            bottom: 8%;
-            background-color: rgba(13, 13, 13, 0.9);
-            border: 1px solid #5ec443;
-            color: #ffffff;
-            padding: 10px 40px;
+        /* Nome e Informações */
+        .info {
+            padding: 15px;
+            background-color: var(--branco-puro); /* Inversão para contraste */
+            color: var(--preto-fundo);
+        }
+
+        .name {
             font-size: 1.5rem;
             font-weight: bold;
             text-transform: uppercase;
+            margin: 0;
+        }
+
+        .role {
+            font-size: 0.8rem;
             letter-spacing: 2px;
-            z-index: 2;
-            border-radius: 4px;
-        }
-
-        .center-content {
-            flex: 1.2; 
-            text-align: center;
-            padding: 0 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .center-content h1 {
-            font-size: 3rem;
-            color: #5ec443; 
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-            text-shadow: 0 4px 15px rgba(94, 196, 67, 0.2);
-        }
-
-        .center-content p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #cccccc;
-            margin-bottom: 50px;
-        }
-
-        .btn-acesso {
-            background-color: #5ec443; 
-            color: #0d0d0d; 
-            text-decoration: none;
-            padding: 20px 60px;
-            font-size: 1.4rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            border-radius: 8px;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(94, 196, 67, 0.3);
-        }
-
-        .btn-acesso:hover {
-            background-color: #6ee352; 
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(94, 196, 67, 0.5);
+            margin-top: 5px;
+            color: #555;
         }
     </style>
 </head>
 <body>
 
-    <div class="side-player">
-        <img src="NODAx.png" alt="NODAx">
-        <div class="player-name">NODAx</div>
-    </div>
+    <div class="container">
+        <!-- Substituindo Noda pelo DNrlq -->
+        <div class="player-card">
+            <div class="photo-container">
+                <img src="dnrlq.png" alt="DNrlq" class="player-photo">
+            </div>
+            <div class="info">
+                <p class="name">DNrlq</p>
+                <p class="role">PLAYER 01</p>
+            </div>
+        </div>
 
-    <div class="center-content">
-        <h1>Dashboard de Desempenho</h1>
-        <p>
-            Plataforma analítica oficial. Ferramenta desenvolvida para o monitoramento de estatísticas táticas, 
-            análise de rendimento individual e métricas de equipe em tempo real. Acesse o sistema abaixo.
-        </p>
-        
-        <a href="https://xxtube18.github.io/sx-dados-V2/jogadores.html" class="btn-acesso">Acessar App</a>
-    </div>
-
-    <div class="side-player">
-        <img src="VITIN9.png" alt="VITIN9">
-        <div class="player-name">VITIN9</div>
+        <!-- Substituindo Vitin9 pelo DNrlq -->
+        <div class="player-card">
+            <div class="photo-container">
+                <img src="dnrlq.png" alt="DNrlq" class="player-photo">
+            </div>
+            <div class="info">
+                <p class="name">DNrlq</p>
+                <p class="role">PLAYER 02</p>
+            </div>
+        </div>
     </div>
 
 </body>
