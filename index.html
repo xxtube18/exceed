@@ -3,110 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lineup Coach Lipee</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <title>Acesso - Dashboard de Desempenho</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Reset e Fontes */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
         body {
-            background-color: #050505;
+            background-color: #0d0d0d;
             color: #ffffff;
-            font-family: 'Rajdhani', sans-serif;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
+            overflow: hidden; 
         }
 
-        .team-container {
+        /* Lados dos Jogadores */
+        .side-player {
+            flex: 1;
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
             justify-content: center;
-            max-width: 1200px;
-        }
-
-        .player-card {
-            width: 300px;
-            background: #111;
-            border-bottom: 4px solid #fff; /* Detalhe inferior branco */
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.8);
-            text-align: center;
-        }
-
-        .photo-wrapper {
-            width: 100%;
-            height: 320px;
-            background: #222; /* Cor de fundo caso a imagem falhe */
-        }
-
-        .player-photo {
-            width: 100%;
+            align-items: center;
             height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%); /* Mantém o padrão P&B */
-            display: block;
+            position: relative;
         }
 
-        .player-info {
-            padding: 20px;
+        .side-player::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            /* Brilho suave em branco para o fundo */
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0,0,0,0) 60%);
+            z-index: 0;
+        }
+
+        .side-player img {
+            height: 80vh; 
+            max-width: 100%;
+            object-fit: cover;
+            z-index: 1;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8)) grayscale(100%); /* Filtro P&B na imagem */
+            border-bottom: 4px solid #ffffff; /* Linha de destaque branca */
+            border-radius: 8px;
         }
 
         .player-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-        }
-
-        /* Botão do Link que você pediu */
-        .btn-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #fff;
-            color: #000;
-            text-decoration: none;
+            position: absolute;
+            bottom: 8%;
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco no nome */
+            border: 1px solid #ffffff;
+            color: #0d0d0d; /* Texto preto para contraste */
+            padding: 10px 40px;
+            font-size: 1.5rem;
             font-weight: bold;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 2;
             border-radius: 4px;
-            transition: 0.3s;
-            font-size: 0.9rem;
         }
 
-        .btn-link:hover {
-            background-color: #ccc;
-            transform: translateY(-2px);
+        /* Conteúdo Central */
+        .center-content {
+            flex: 1.2; 
+            text-align: center;
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .center-content h1 {
+            font-size: 3rem;
+            color: #ffffff; /* Título em Branco */
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .center-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #aaaaaa; /* Cinza para legibilidade */
+            margin-bottom: 50px;
+        }
+
+        /* Botão de Acesso - Estilo Preto e Branco */
+        .btn-acesso {
+            background-color: #ffffff; 
+            color: #0d0d0d; 
+            text-decoration: none;
+            padding: 20px 60px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-acesso:hover {
+            background-color: #cccccc; 
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 <body>
 
-    <div class="team-container">
-        <!-- CARD 01 (Substituiu Noda) -->
-        <div class="player-card">
-            <div class="photo-wrapper">
-                <!-- AJUSTE AQUI: Se a foto for do PC, deixe dnrlq.png. Se for da web, cole o link no lugar -->
-                <img src="dnrlq.png" alt="DNrlq" class="player-photo">
-            </div>
-            <div class="player-info">
-                <h2 class="player-name">DNrlq</h2>
-                <a href="LINK_AQUI" class="btn-link">Ver Perfil</a>
-            </div>
-        </div>
+    <!-- Lado Esquerdo: DNrlq (Antigo Noda) -->
+    <div class="side-player">
+        <img src="dnrlq.png" alt="DNrlq">
+        <div class="player-name">DNrlq</div>
+    </div>
 
-        <!-- CARD 02 (Substituiu Vitin9) -->
-        <div class="player-card">
-            <div class="photo-wrapper">
-                <img src="dnrlq.png" alt="DNrlq" class="player-photo">
-            </div>
-            <div class="player-info">
-                <h2 class="player-name">DNrlq</h2>
-                <a href="LINK_AQUI" class="btn-link">Ver Perfil</a>
-            </div>
-        </div>
+    <!-- Centro: Dashboard -->
+    <div class="center-content">
+        <h1>Dashboard de Desempenho</h1>
+        <p>
+            Plataforma analítica oficial. Ferramenta desenvolvida para o monitoramento de estatísticas táticas, 
+            análise de rendimento individual e métricas de equipe em tempo real. Acesse o sistema abaixo.
+        </p>
+        
+        <a href="https://xxtube18.github.io/sx-dados-V2/jogadores.html" class="btn-acesso">Acessar App</a>
+    </div>
+
+    <!-- Lado Direito: DNrlq (Antigo Vitin9) -->
+    <div class="side-player">
+        <img src="dnrlq.png" alt="DNrlq">
+        <div class="player-name">DNrlq</div>
     </div>
 
 </body>
