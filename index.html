@@ -2,52 +2,67 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Player Card - DNrlq</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lineup | DNrlq</title>
+    <!-- Fonte moderna do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* Configurações Gerais e Cores */
-        :root {
-            --preto-fundo: #000000;
-            --preto-card: #121212;
-            --branco-puro: #FFFFFF;
-            --cinza-detalhe: #333333;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--preto-fundo);
+            background-color: #050505; /* Preto quase absoluto */
+            color: #ffffff;
+            font-family: 'Rajdhani', sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
+            justify-content: center;
+            min-height: 100vh;
         }
 
-        .container {
-            display: flex;
-            gap: 20px;
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 10px;
         }
 
-        /* Estrutura do Card */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            width: 90%;
+        }
+
+        /* Card Estilo Profissional */
         .player-card {
-            width: 250px;
-            background-color: var(--preto-card);
-            border: 2px solid var(--branco-puro);
-            border-radius: 10px;
+            position: relative;
+            background: linear-gradient(180deg, #111 0%, #000 100%);
+            border-left: 4px solid #ffffff; /* Detalhe lateral branco */
+            border-radius: 4px;
             overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
         }
 
         .player-card:hover {
-            transform: scale(1.05);
-            border-color: #888; /* Leve destaque no hover */
+            transform: translateY(-10px);
+            border-left-width: 10px;
+            box-shadow: 0 15px 40px rgba(255,255,255,0.1);
         }
 
-        /* Foto do Player com Filtro P&B */
-        .photo-container {
-            width: 100%;
-            height: 300px;
-            background-color: var(--cinza-detalhe);
+        /* Imagem com Máscara */
+        .photo-wrapper {
+            position: relative;
+            height: 350px;
+            background: #1a1a1a;
             overflow: hidden;
         }
 
@@ -55,56 +70,85 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Aplica o efeito Preto e Branco na foto */
-            filter: grayscale(100%) contrast(1.1);
+            filter: grayscale(100%) brightness(0.8);
+            transition: 0.5s;
         }
 
-        /* Nome e Informações */
-        .info {
-            padding: 15px;
-            background-color: var(--branco-puro); /* Inversão para contraste */
-            color: var(--preto-fundo);
+        .player-card:hover .player-photo {
+            filter: grayscale(100%) brightness(1.1);
+            transform: scale(1.05);
         }
 
-        .name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
+        /* Overlay de Gradiente na Foto */
+        .photo-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, #000, transparent);
+        }
+
+        /* Informações do Player */
+        .player-info {
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .player-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin: 0;
+            color: #fff;
         }
 
-        .role {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-top: 5px;
-            color: #555;
+        .player-tag {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Linha Decorativa */
+        .divider {
+            width: 40px;
+            height: 3px;
+            background-color: #fff;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Substituindo Noda pelo DNrlq -->
-        <div class="player-card">
-            <div class="photo-container">
-                <img src="dnrlq.png" alt="DNrlq" class="player-photo">
-            </div>
-            <div class="info">
-                <p class="name">DNrlq</p>
-                <p class="role">PLAYER 01</p>
-            </div>
-        </div>
+    <h1>Lineup</h1>
 
-        <!-- Substituindo Vitin9 pelo DNrlq -->
-        <div class="player-card">
-            <div class="photo-container">
+    <div class="team-container">
+        <!-- Player 1 (Antigo Noda) -->
+        <article class="player-card">
+            <div class="photo-wrapper">
                 <img src="dnrlq.png" alt="DNrlq" class="player-photo">
             </div>
-            <div class="info">
-                <p class="name">DNrlq</p>
-                <p class="role">PLAYER 02</p>
+            <div class="player-info">
+                <div class="player-tag">Main Player</div>
+                <h2 class="player-name">DNrlq</h2>
+                <div class="divider"></div>
             </div>
-        </div>
+        </article>
+
+        <!-- Player 2 (Antigo Vitin9) -->
+        <article class="player-card">
+            <div class="photo-wrapper">
+                <img src="dnrlq.png" alt="DNrlq" class="player-photo">
+            </div>
+            <div class="player-info">
+                <div class="player-tag">Support / Flex</div>
+                <h2 class="player-name">DNrlq</h2>
+                <div class="divider"></div>
+            </div>
+        </article>
     </div>
 
 </body>
