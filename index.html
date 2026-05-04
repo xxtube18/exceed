@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Ordem - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
 
+        body {
+            background-color: #050a14; /* Azul quase preto */
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Lados (Fotos) */
+        .side-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .side-container img {
+            height: 75vh;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+            border-bottom: 4px solid #0077b6;
+        }
+
+        .label-name {
+            margin-top: -30px;
+            background-color: #0077b6;
+            color: #ffffff;
+            padding: 10px 30px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 2;
+            border-radius: 4px;
+        }
+
+        /* Centro */
+        .center-content {
+            flex: 1.5;
+            text-align: center;
+            padding: 0 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .center-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .center-content .sub-title {
+            color: #00b4d8;
+            font-weight: bold;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .center-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #8892b0;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        /* Botão */
+        .btn-acesso {
+            background-color: #ffffff;
+            color: #050a14;
+            text-decoration: none;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-acesso:hover {
+            background-color: #00b4d8;
+            color: #ffffff;
+            transform: translateY(-5px);
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            body { flex-direction: column; height: auto; }
+            .side-container { height: 60vh; width: 100%; margin: 20px 0; }
+            .side-container img { height: 50vh; }
+            .center-content { order: -1; padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Lado Esquerdo: GOABE -->
+    <div class="side-container">
+        <img src="NVO%20GOABE7.png" alt="NVO GOABE">
+        <div class="label-name">NVO GOABE</div>
+    </div>
+
+    <!-- Centro: Dashboard -->
+    <div class="center-content">
+        <div class="sub-title">Equipe</div>
+        <h1>Nova Ordem</h1>
+        <p>Plataforma analítica oficial. Monitoramento de estatísticas táticas e métricas em tempo real.</p>
+        <a href="https://xxtube18.github.io/sx-dados-V2/jogadores.html" class="btn-acesso">Acessar App</a>
+    </div>
+
+    <!-- Lado Direito: LOGO -->
+    <div class="side-container">
+        <img src="NVO-SYMBOL-PNG%20(3)%20(1).jpg" alt="Logo Nova Ordem">
+        <div class="label-name">Oficial</div>
+    </div>
+
+</body>
+</html>
