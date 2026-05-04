@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Desempenho - NVO</title>
+    <title>NVO - Dashboard de Desempenho</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            /* Fundo em degradê azul escuro profissional */
-            background: radial-gradient(circle at center, #0a192f 0%, #020c1b 100%);
-            color: #e6f1ff;
+            background: radial-gradient(circle at center, #05162d 0%, #000814 100%);
+            color: #ffffff;
             min-height: 100vh;
             display: flex;
             justify-content: space-between;
@@ -23,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* Container dos Jogadores */
+        /* Estilo dos Jogadores */
         .side-player {
             flex: 1;
             display: flex;
@@ -35,147 +34,113 @@
             transition: all 0.5s ease;
         }
 
-        /* Brilho azul suave atrás dos jogadores */
-        .side-player::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 119, 255, 0.1) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-        }
-
         .side-player img {
-            height: 75vh;
+            height: 70vh;
             max-width: 100%;
             object-fit: contain;
             z-index: 1;
-            /* Filtro leve para integrar ao azul */
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.7));
-            border-bottom: 4px solid #1d3557;
+            filter: drop-shadow(0 0 15px rgba(0, 119, 255, 0.3));
+            border-bottom: 3px solid #0077b6;
             transition: all 0.4s ease;
         }
 
-        /* Efeito Hover nos Jogadores */
         .side-player:hover img {
-            transform: scale(1.03);
-            border-bottom-color: #00b4d8;
-            filter: drop-shadow(0 0 15px rgba(0, 180, 216, 0.4));
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 25px rgba(0, 180, 216, 0.6));
+            border-bottom-color: #00f2ff;
         }
 
         .player-name {
-            margin-top: -30px;
-            background: #1d3557;
-            color: #caf0f8;
-            padding: 10px 30px;
-            font-size: 1.2rem;
-            font-weight: 900;
+            margin-top: -25px;
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            color: white;
+            padding: 8px 25px;
+            font-size: 1.1rem;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
             z-index: 2;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            border: 1px solid #00b4d8;
+            border-radius: 2px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        /* Conteúdo Central */
+        /* Centro */
         .center-content {
-            flex: 1.5;
+            flex: 1.2;
             text-align: center;
-            padding: 0 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 0 20px;
             z-index: 10;
         }
 
         .center-content h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #ffffff;
+            font-size: 3rem;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            text-shadow: 0 0 20px rgba(0, 180, 216, 0.5);
+            letter-spacing: 3px;
+            background: linear-gradient(to bottom, #ffffff, #90e0ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .center-content p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #8892b0;
-            margin-bottom: 40px;
-            max-width: 500px;
+            color: #a8dadc;
+            margin-bottom: 35px;
+            font-size: 1rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Botão Azul Estilizado */
+        /* Botão */
         .btn-acesso {
-            background-color: #0077b6;
-            color: #ffffff;
+            display: inline-block;
+            background: transparent;
+            color: #00f2ff;
             text-decoration: none;
-            padding: 18px 50px;
-            font-size: 1.2rem;
-            font-weight: 800;
+            padding: 15px 45px;
+            font-size: 1.1rem;
+            font-weight: bold;
             text-transform: uppercase;
-            border-radius: 5px;
-            letter-spacing: 1px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(0, 119, 182, 0.3);
+            border: 2px solid #00f2ff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);
         }
 
         .btn-acesso:hover {
-            background-color: #00b4d8;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 180, 216, 0.5);
+            background: #00f2ff;
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+            transform: translateY(-2px);
         }
 
-        /* Responsividade para Celulares */
         @media (max-width: 1024px) {
-            body {
-                flex-direction: column;
-                height: auto;
-                overflow-y: auto;
-                background: #020c1b;
-            }
-
-            .side-player {
-                height: 60vh;
-                width: 100%;
-                margin: 20px 0;
-            }
-
-            .side-player img {
-                height: 50vh;
-            }
-
-            .center-content {
-                order: -1;
-                padding: 60px 20px;
-            }
+            body { flex-direction: column; height: auto; }
+            .side-player { height: 50vh; width: 100%; margin: 20px 0; }
+            .side-player img { height: 40vh; }
+            .center-content { order: -1; padding: 50px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Lado Esquerdo: NVO GOABE7 -->
+    <!-- Lado Esquerdo: GOABE -->
     <div class="side-player">
-        <img src="NVO%20GOABE7.png" alt="Jogador NVO GOABE7">
+        <img src="NVO%20GOABE7.png" alt="NVO GOABE" onerror="this.src='NVO GOABE7.png'">
         <div class="player-name">NVO GOABE</div>
     </div>
 
-    <!-- Centro: Dashboard -->
+    <!-- Centro -->
     <div class="center-content">
-        <h1>Dashboard de Desempenho</h1>
-        <p>
-            Plataforma analítica oficial NVO. Monitoramento de estatísticas táticas e métricas de equipe em tempo real.
-        </p>
-        
-        <a href="https://xxtube18.github.io/sx-dados-V2/jogadores.html" class="btn-acesso">Acessar App</a>
+        <h1>Dashboard</h1>
+        <p>Monitoramento de performance e métricas em tempo real para a equipe NVO.</p>
+        <a href="https://xxtube18.github.io/sx-dados-V2/jogadores.html" class="btn-acesso">Acessar Sistema</a>
     </div>
 
-    <!-- Lado Direito: NVO GUIFOX (com espaço antes do ponto) -->
+    <!-- Lado Direito: GUIFOX -->
     <div class="side-player">
-        <img src="NVO%20GUIFOX%20.png" alt="Jogador NVO GUIFOX">
+        <!-- O código abaixo tenta as duas formas comuns de ler o espaço que você informou -->
+        <img src="NVO%20GUIFOX%20.png" alt="NVO GUIFOX" onerror="this.src='NVO GUIFOX .png'">
         <div class="player-name">NVO GUIFOX</div>
     </div>
 
