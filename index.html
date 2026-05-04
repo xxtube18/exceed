@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acesso - Dashboard de Desempenho</title>
+    <title>Acesso - Dashboard Profissional</title>
     <style>
         * {
             margin: 0;
@@ -13,8 +13,9 @@
         }
 
         body {
-            background-color: #0d0d0d;
-            color: #ffffff;
+            /* Gradiente de fundo com tons de azul profundo */
+            background: linear-gradient(135deg, #050a14 0%, #0a192f 50%, #0d1117 100%);
+            color: #e6f1ff;
             min-height: 100vh;
             display: flex;
             justify-content: space-between;
@@ -34,12 +35,13 @@
             transition: all 0.5s ease;
         }
 
+        /* Brilho suave atrás do jogador em azul claro */
         .side-player::before {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0,0,0,0) 70%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.07) 0%, rgba(0,0,0,0) 70%);
             z-index: 0;
         }
 
@@ -48,30 +50,31 @@
             max-width: 100%;
             object-fit: contain;
             z-index: 1;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9)) grayscale(100%);
-            border-bottom: 4px solid #ffffff;
-            transition: all 0.4s ease;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.8)) saturate(80%);
+            border-bottom: 4px solid #112240;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Efeito ao passar o mouse no jogador */
+        /* Efeito ao passar o mouse */
         .side-player:hover img {
-            filter: grayscale(0%);
-            transform: scale(1.03);
-            border-bottom-color: #00ff88; /* Cor de destaque opcional */
+            filter: saturate(110%) drop-shadow(0 0 20px rgba(0, 119, 255, 0.4));
+            transform: scale(1.02);
+            border-bottom-color: #64ffda; /* Azul esverdeado/Cyan para destaque */
         }
 
         .player-name {
             margin-top: -30px;
-            background-color: #ffffff;
-            color: #0d0d0d;
-            padding: 10px 30px;
-            font-size: 1.2rem;
-            font-weight: 900;
+            background: linear-gradient(90deg, #112240, #1d3557);
+            color: #64ffda;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             z-index: 2;
             border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(100, 255, 218, 0.2);
         }
 
         /* Conteúdo Central */
@@ -87,90 +90,100 @@
         }
 
         .center-content h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #ffffff;
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            background: linear-gradient(to bottom, #ffffff 0%, #a8b2d1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             margin-bottom: 20px;
             line-height: 1.1;
         }
 
         .center-content p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #aaaaaa;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #8892b0;
             margin-bottom: 40px;
-            max-width: 500px;
+            max-width: 450px;
         }
 
-        /* Botão Estilizado */
+        /* Botão Estilizado em tons de azul */
         .btn-acesso {
-            background-color: #ffffff;
-            color: #0d0d0d;
+            background-color: transparent;
+            color: #64ffda;
             text-decoration: none;
             padding: 18px 50px;
-            font-size: 1.2rem;
-            font-weight: 800;
+            font-size: 1rem;
+            font-weight: 700;
             text-transform: uppercase;
-            border-radius: 5px;
-            letter-spacing: 1px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            border: 2px solid #64ffda;
+            border-radius: 4px;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-acesso:hover {
-            background-color: #00ff88; /* Muda para verde neon no hover */
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3);
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(100, 255, 218, 0.15);
         }
 
-        /* Responsividade para Celulares */
+        /* Responsividade */
         @media (max-width: 1024px) {
             body {
                 flex-direction: column;
                 height: auto;
                 overflow-y: auto;
+                background: #0a192f;
             }
 
             .side-player {
-                height: 60vh;
+                height: 50vh;
                 width: 100%;
-                margin: 20px 0;
+                margin: 40px 0;
             }
 
             .side-player img {
-                height: 50vh;
+                height: 40vh;
             }
 
             .center-content {
-                order: -1; /* Título e botão aparecem no topo no celular */
-                padding: 60px 20px;
+                order: -1;
+                padding: 80px 20px 40px;
+            }
+            
+            .player-name {
+                margin-top: -20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Lado Esquerdo: DMrlq -->
+    <!-- Lado Esquerdo: NVO GOABE -->
     <div class="side-player">
-        <img src="DMrlq.png" alt="Jogador DMrlq">
-        <div class="player-name">DMrlq</div>
+        <img src="NVO GOABE.png" alt="Jogador NVO GOABE">
+        <div class="player-name">NVO GOABE</div>
     </div>
 
     <!-- Centro: Dashboard -->
     <div class="center-content">
         <h1>Dashboard de Desempenho</h1>
         <p>
-            Plataforma analítica oficial. Ferramenta desenvolvida para o monitoramento de estatísticas táticas e métricas de equipe em tempo real.
+            Análise tática avançada e métricas de alta performance. 
+            Acesse o ecossistema de dados para monitoramento em tempo real.
         </p>
         
-        <a href="https://xxtube18.github.io/sx-dados-V2/jogadores.html" class="btn-acesso">Acessar App</a>
+        <a href="https://xxtube18.github.io/sx-dados-V2/jogadores.html" class="btn-acesso">Entrar no Sistema</a>
     </div>
 
-    <!-- Lado Direito: TTZ -->
+    <!-- Lado Direito: NVO GUIFOX -->
     <div class="side-player">
-        <img src="TTZ.png" alt="Jogador TTZ">
-        <div class="player-name">TTZ</div>
+        <img src="NVO GUIFOX.png" alt="Jogador NVO GUIFOX">
+        <div class="player-name">NVO GUIFOX</div>
     </div>
 
 </body>
